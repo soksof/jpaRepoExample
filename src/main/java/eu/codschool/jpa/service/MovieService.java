@@ -8,6 +8,7 @@ import eu.codschool.jpa.entity.Movie;
 
 public interface MovieService {
     List<Movie> findAllByGenre(Genre genre);
+    Movie findById(int id);
     List<Movie> findAll();
     List<Movie> findByTitleContaining(String searchTerm);
     List<Movie> findByDirector(Director director);

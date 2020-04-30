@@ -5,7 +5,7 @@
 <title>Movies Fragment</title>
 </head>
 <body>
-<div th:fragment="movielist">
+<div>
 	<h2 class="mb-5">Movie List</h2>
 
 	<div class="x_content">
@@ -22,13 +22,12 @@
 			</tr>
 			</thead>
 			<tbody>
-			<tr th:each="d : ${movies}">
-				<td th:text="${d.getMovieid()}"><a
-						href="/movie/${d.getMovieid()}">ID</a></td>
-				<td th:text="${d.getTitle()}">Title</td>
-				<td th:text="${d.getDirector()}">Title</td>
-				<td th:text="${d.getSummary()}">Title</td>
-				<td th:text="${d.getGenres()}">Genres</td>
+			<tr th:each="movie : ${movies}">
+				<td><a th:href="@{/movie/view/{id}(id=${movie.getMovieid()})}" th:text="${movie.getMovieid()}">ID</a></td>
+				<td th:text="${movie.getTitle()}">Title</td>
+				<td th:text="${movie.getDirector()}">Title</td>
+				<td th:text="${movie.getSummary()}">Title</td>
+				<td th:text="${movie.getGenres()}">Genres</td>
 			</tr>
 			</tbody>
 		</table>

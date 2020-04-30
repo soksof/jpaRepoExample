@@ -20,7 +20,12 @@ public class MovieServiceImpl implements MovieService {
 	public List<Movie> findAllByGenre(Genre genre) {
 		return movieRepository.findAllByGenre(genre);
 	}
-	
+
+	@Override
+	public Movie findById(int id) {
+		return movieRepository.findById(id).orElse(null);
+	}
+
 	@Override
 	public List<Movie> findAll() {
 		return movieRepository.findAll();

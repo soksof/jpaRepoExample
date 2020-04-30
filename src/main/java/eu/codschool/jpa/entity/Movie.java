@@ -22,7 +22,9 @@ public class Movie {
 	@JoinColumn(name = "director")
 	private Director director;
 	@ManyToMany
-	@JoinTable(name = "moviegenre", joinColumns = @JoinColumn(name = "movieid", referencedColumnName = "movieid"), inverseJoinColumns = @JoinColumn(name = "genreid", referencedColumnName = "genreid"))
+	@JoinTable(name = "moviegenre",
+			joinColumns = @JoinColumn(name = "movieid", referencedColumnName = "movieid"),
+			inverseJoinColumns = @JoinColumn(name = "genreid", referencedColumnName = "genreid"))
 	private Set<Genre> genre;
 
 	/**

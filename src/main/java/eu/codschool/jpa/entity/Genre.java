@@ -11,6 +11,7 @@ public class Genre {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int genreid;
 	private String name;
+
 	/**
 	 * @return the genreid
 	 */
