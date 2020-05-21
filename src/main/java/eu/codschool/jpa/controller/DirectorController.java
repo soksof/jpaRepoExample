@@ -7,10 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import eu.codschool.jpa.entity.Director;
@@ -42,9 +39,17 @@ public class DirectorController {
 		return "fragments/directors";
 	}
 
-	@RequestMapping(value = "/director", method = RequestMethod.GET)
-	public ModelAndView newPerson() {
-		return new ModelAndView("director/form", "director", new Director());
+	@GetMapping("/director/new")
+	public String newDirector(Model model) {
+		model.addAttribute("directorNew", new Director());
+		return "fragments/directorNew";
+	}
+
+	@PostMapping("/director/new")
+	public String saveNewDirector(@ModelAttribute("directorNew") Director d, BindingResult result, Model model){
+		System.out.println("I will add to the repo the new director "+d.getName());
+		directorService.save(d);
+		return "redirect:/index";
 	}
 
 	@RequestMapping(value = "/director", method = RequestMethod.POST)

@@ -22,7 +22,7 @@
 			</tr>
 			</thead>
 			<tbody>
-			<tr th:each="movie : ${movies}">
+				<tr th:each="movie : ${movies}">
 				<td><a th:href="@{/movie/view/{id}(id=${movie.getMovieid()})}" th:text="${movie.getMovieid()}">ID</a></td>
 				<td th:text="${movie.getTitle()}">Title</td>
 				<td th:text="${movie.getDirector()}">Title</td>
